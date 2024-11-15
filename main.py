@@ -61,3 +61,7 @@ def algorithm_choice(algorithm):
 
 if __name__ == "__main__":
     main_menu()
+
+# include right most and left most dfs
+# searching specific node from the graph with both algs
+# make a room for inputed graph **

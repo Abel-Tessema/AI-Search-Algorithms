@@ -1,5 +1,6 @@
 # algorithms.py
 from collections import deque
+from utils import print_verbose_graph
 
 # Breadth first search algorithm
 def bfs(graph, start_node, verbose=False):
@@ -14,6 +15,7 @@ def bfs(graph, start_node, verbose=False):
             steps.append(node)   # Add to traversal steps
             
             if verbose:
+                print_verbose_graph(node)
                 print(f"Visiting Node: {node}")
                 print(f"Queue: {list(queue)}")
                 print(f"Visited: {visited}")
@@ -37,9 +39,10 @@ def dfs(graph, start_node, verbose=False):
             steps.append(node)
             
             if verbose:
+                print_verbose_graph(node)
                 print(f"Visiting Node: {node}")
                 print(f"Stack: {stack}")
-                print(f"Visited: {visited}")
+                print(f"Visited: {visited}\n")
             
             for neighbor in reversed(graph[node]):
                 if neighbor not in visited:

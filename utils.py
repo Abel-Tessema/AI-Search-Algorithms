@@ -1,5 +1,46 @@
 # utils.py
 
+def print_verbose_graph(curr_node):
+    tree_structure = {
+        "A": r"""    
+        *A
+        / \
+       B   C
+      / \   \
+     D   E   F""",
+        "B": r"""     
+        A
+       / \
+     *B   C
+     / \   \
+    D   E   F""", 
+        "C": r"""     
+        A
+       / \
+      B  *C
+     / \   \
+    D   E   F""", 
+        "D": r"""     
+        A
+       / \
+      B   C
+     / \   \
+   *D   E   F""", 
+        "E": r"""    
+        A
+       / \
+      B   C
+     / \   \
+    D  *E   F""", 
+        "F": r"""     
+        A
+       / \
+      B   C
+     / \   \
+    D   E  *F""", 
+    }
+    print(tree_structure[curr_node])
+
 def print_main_menu():
     print("\n--- Algorithm Demonstration ---")
     print("1. BFS (Breadth-First Search)")
