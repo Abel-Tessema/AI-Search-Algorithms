@@ -52,6 +52,11 @@ def print_algorithm_choice(algorithm_name):
     print("1. View verbose steps")
     print("2. View only input/output")
 
+def print_dfs_type():
+    print("\n--- DFS type --- \n")
+    print("1. Left-most dfs")
+    print("2. Right-most dfs")
+
 def print_back_or_exit():
     print("\n1. Back to main menu")
     print("2. Exit")
