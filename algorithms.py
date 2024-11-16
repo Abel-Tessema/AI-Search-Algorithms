@@ -1,72 +1,106 @@
 # algorithms.py
 from collections import deque
+from termcolor import colored
+
 from utils import print_verbose_graph
 
-# Breadth first search algorithm
 def bfs(graph, start_node, search_node='', verbose=False):
-    visited = set()  # Set to track visited nodes
-    queue = deque([start_node])  # Initialize queue with start node
-    steps = []  # List to store traversal steps
+    """
+    Breadth-First Search (BFS) algorithm.
+
+    Args:
+        graph (dict): Graph represented as an adjacency list.
+        start_node (str): The starting node for the traversal.
+        search_node (str): The node to search for (optional).
+        verbose (bool): If True, displays step-by-step traversal details.
+
+    Returns:
+        list: Order of traversal or traversal up to the search node.
+    """
+    visited = set()  # Tracks visited nodes
+    queue = deque([start_node])  # Queue for BFS
+    steps = []  # Tracks the traversal order
 
     while queue:
-        node = queue.popleft()  # Dequeue a node
+        node = queue.popleft()  # Dequeue the next node
         if node not in visited:
             visited.add(node)    # Mark node as visited
-            steps.append(node)   # Add to traversal steps
-            
-            if node == search_node:
-                print('Found!')
-                return steps
+            steps.append(node)   # Add node to traversal list
 
-            if verbose:
-                print("\nVerbose Mode: Showing each step of BFS traversal...\n\n")
-                print_verbose_graph(node)
-                print(f"Visiting Node: {node}")
-                print(f"Queue: {list(queue)}")
-                print(f"Visited: {visited}")
-            
+            # Add unvisited neighbors to the queue
             for neighbor in graph[node]:
                 if neighbor not in visited:
                     queue.append(neighbor)
-    # if we reach here having a search node, then it means we have not got the node inside the graph
-    if search_node != '':
-        print("Not found!")
+
+            # Verbose output for traversal
+            if verbose:
+                print_verbose_graph(node)
+                print(f"Current Node: {node}")
+                print(f"Queue: {list(queue)}")
+                print(f"Visited Nodes: {visited}")
+                input("\n Press Enter to continue...\n")
+            
+            # Check if the search node is found
+            if node == search_node:
+                if verbose:
+                    print(colored(f"\nNode '{search_node}' found!\n", 'green'))
+                return steps
+
+    # If search_node is specified but not found
+    if search_node:
+        print(f"Node '{search_node}' not found in the graph.")
 
     return steps
 
-# Depth first search algorithm
-def dfs(graph, start_node, search_node='', direction="left-most",verbose=False):
-    visited = set()
-    stack = [start_node]
-    steps = []
+
+def dfs(graph, start_node, search_node='', direction="left-most", verbose=False):
+    """
+    Depth-First Search (DFS) algorithm with options for left-most or right-most traversal.
+
+    Args:
+        graph (dict): Graph represented as an adjacency list.
+        start_node (str): The starting node for the traversal.
+        search_node (str): The node to search for (optional).
+        direction (str): Direction of traversal, either "left-most" or "right-most".
+        verbose (bool): If True, displays step-by-step traversal details.
+
+    Returns:
+        list: Order of traversal or traversal up to the search node.
+    """
+    visited = set()  # Tracks visited nodes
+    stack = [start_node]  # Stack for DFS
+    steps = []  # Tracks the traversal order
 
     while stack:
-        node = stack.pop()
+        node = stack.pop()  # Pop the next node
         if node not in visited:
-            visited.add(node)
-            steps.append(node)
-            
+            visited.add(node)  # Mark node as visited
+            steps.append(node)  # Add node to traversal list
+
+            # Determine traversal direction and add neighbors
+            neighbors = (
+                reversed(graph[node]) if direction == 'left-most' else graph[node]
+            )
+            for neighbor in neighbors:
+                if neighbor not in visited:
+                    stack.append(neighbor)
+
+            # Verbose output for traversal
+            if verbose:
+                print_verbose_graph(node)
+                print(f"Current Node: {node}")
+                print(f"Stack: {stack}")
+                print(f"Visited Nodes: {visited}")
+                input("\n Press Enter to continue...\n")
+
+            # Check if the search node is found
             if node == search_node:
-                print("Found!")
+                if verbose:
+                    print(colored(f"\nNode '{search_node}' found!\n", 'red'))
                 return steps
 
-            if verbose:
-                print("\nVerbose Mode: Showing each step of DFS traversal...\n\n")
-                print_verbose_graph(node)
-                print(f"Visiting Node: {node}")
-                print(f"Stack: {stack}")
-                print(f"Visited: {visited}\n")
-
-            if direction == 'left-most':
-                for neighbor in reversed(graph[node]):
-                    if neighbor not in visited:
-                        stack.append(neighbor)
-            else: 
-                for neighbor in graph[node]:
-                    if neighbor not in visited:
-                        stack.append(neighbor)
-    # if we reach here having a search node, then it means we have not got the node inside the graph
-    if search_node != '':
-        print("Not found!")
+    # If search_node is specified but not found
+    if search_node:
+        print(f"Node '{search_node}' not found in the graph.")
 
     return steps
