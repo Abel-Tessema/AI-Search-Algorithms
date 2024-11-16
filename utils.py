@@ -57,6 +57,11 @@ def print_dfs_type():
     print("1. Left-most dfs")
     print("2. Right-most dfs")
 
+def print_action_selection():
+    print("\n--- What do you want to do? ---")
+    print("1. Search a node.")
+    print("2. Demonstrate traversal steps.")
+
 def print_back_or_exit():
     print("\n1. Back to main menu")
     print("2. Exit")
