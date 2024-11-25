@@ -1,8 +1,9 @@
 # algorithms.py
 from collections import deque
 from termcolor import colored
-
+from getpass import getpass
 from utils import print_verbose_graph
+import os
 
 def bfs(graph, start_node, search_node='', verbose=False):
     """
@@ -38,7 +39,7 @@ def bfs(graph, start_node, search_node='', verbose=False):
                 print(f"Current Node: {node}")
                 print(f"Queue: {list(queue)}")
                 print(f"Visited Nodes: {visited}")
-                input("\n Press Enter to continue...\n")
+                getpass("\n Press Enter to continue...\n")
             
             # Check if the search node is found
             if node == search_node:
@@ -48,7 +49,7 @@ def bfs(graph, start_node, search_node='', verbose=False):
 
     # If search_node is specified but not found
     if search_node:
-        print(f"Node '{search_node}' not found in the graph.")
+        print(colored(f"Node '{search_node}' not found in the graph.", 'red'))
 
     return steps
 
@@ -91,16 +92,16 @@ def dfs(graph, start_node, search_node='', direction="left-most", verbose=False)
                 print(f"Current Node: {node}")
                 print(f"Stack: {stack}")
                 print(f"Visited Nodes: {visited}")
-                input("\n Press Enter to continue...\n")
+                getpass("\n Press Enter to continue...\n")
 
             # Check if the search node is found
             if node == search_node:
                 if verbose:
-                    print(colored(f"\nNode '{search_node}' found!\n", 'red'))
+                    print(colored(f"\nNode '{search_node}' found!\n", 'green'))
                 return steps
 
     # If search_node is specified but not found
     if search_node:
-        print(f"Node '{search_node}' not found in the graph.")
+        print(colored(f"Node '{search_node}' not found in the graph.", 'red'))
 
     return steps

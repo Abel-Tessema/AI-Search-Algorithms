@@ -44,9 +44,9 @@ def algorithm_choice(algorithm):
     # Search for a specific node in the graph
     if action == '1':
         search_node = input("Input the node to be searched: ").strip()
-        if search_node not in graph:
-            print(f"Node '{search_node}' does not exist in the graph. Please try again.")
-            return
+        # if search_node not in graph:
+        #     print(f"Node '{search_node}' does not exist in the graph. Please try again.")
+        #     return
 
         process_algorithm(algorithm, search_node=search_node)
     

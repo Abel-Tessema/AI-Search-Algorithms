@@ -1,5 +1,5 @@
 # utils.py
-
+import os
 def print_verbose_graph(curr_node):
     """
     Prints the current graph structure with the current node marked.
@@ -57,6 +57,7 @@ def print_main_menu():
     """
     Prints the main menu for algorithm selection.
     """
+    os.system('cls')
     print("\n--- Algorithm Demonstration ---")
     print("1. BFS (Breadth-First Search)")
     print("2. DFS (Depth-First Search)")
