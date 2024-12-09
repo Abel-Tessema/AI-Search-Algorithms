@@ -1,7 +1,12 @@
 # algorithms.py
 from collections import deque
+<<<<<<< HEAD
 from termcolor import colored
 from getpass import getpass
+=======
+# from termcolor import colored
+
+>>>>>>> 59260659896f49295aaec9439bae765895666199
 from utils import print_verbose_graph
 import os
 
@@ -44,7 +49,7 @@ def bfs(graph, start_node, search_node='', verbose=False):
             # Check if the search node is found
             if node == search_node:
                 if verbose:
-                    print(colored(f"\nNode '{search_node}' found!\n", 'green'))
+                    print(f"\nNode '{search_node}' found!\n", 'green')
                 return steps
 
     # If search_node is specified but not found
@@ -97,7 +102,11 @@ def dfs(graph, start_node, search_node='', direction="left-most", verbose=False)
             # Check if the search node is found
             if node == search_node:
                 if verbose:
+<<<<<<< HEAD
                     print(colored(f"\nNode '{search_node}' found!\n", 'green'))
+=======
+                    print(f"\nNode '{search_node}' found!\n", 'red')
+>>>>>>> 59260659896f49295aaec9439bae765895666199
                 return steps
 
     # If search_node is specified but not found
