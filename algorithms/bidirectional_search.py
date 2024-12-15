@@ -1,7 +1,7 @@
 
 import heapq
 
-def bidirectional_search_with_costs(graph, start_node, goal_node):
+def bidirectional_search_with_costs(graph, goal_node, start_node='A'):
     forward_queue = [(0, start_node, [start_node])]  # (cost, current_node, path)
     backward_queue = [(0, goal_node, [goal_node])]
     
@@ -58,7 +58,7 @@ graph = {
 }
 
 start = 'A'
-goal = 'G'
+goal = 'E'
 
 cost, path = bidirectional_search_with_costs(graph, start, goal)
 print(f"Cost: {cost}, Path: {path}")

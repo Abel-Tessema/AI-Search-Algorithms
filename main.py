@@ -1,100 +1,65 @@
-# main.py
-import os
-import sys
-from algorithms import bfs, dfs
-from utils import print_main_menu, print_algorithm_choice, print_back_or_exit, back_or_exit, print_dfs_type, print_action_selection
+# import customtkinter as ctk
+# from frames.main_frame import MainFrame
+# from frames.sidebar_frame import SideBar
 
-os.system("cls")
+# ctk.set_appearance_mode("dark")  # Dark mode
+# ctk.set_default_color_theme("blue")  # Blue theme
 
-# Example graph as an adjacency list
-graph = {
-    'A': ['B', 'C'],
-    'B': ['A', 'D', 'E'],
-    'C': ['A', 'F'],
-    'D': ['B'],
-    'E': ['B'],
-    'F': ['C']
-}
+# class App(ctk.CTk):
+#     def __init__(self):
+#         super().__init__()
+#         self.title("CustomTkinter Modular App")
+#         self.geometry("1300x600")
+#         self.resizable(False, False)
 
-def main_menu():
-    """
-    Display the main menu and handle user input to choose an algorithm or exit.
-    """
-    while True:
-        print_main_menu()
-        choice = input("Choose an algorithm (1 or 2): ")
+#         # Create a grid layout for the App window
+#         self.grid_rowconfigure(0, weight=1)  # Make the row stretchable
+#         self.grid_columnconfigure(1, weight=1)  # Make the main frame stretchable
 
-        if choice == '1':
-            algorithm_choice(algorithm='bfs')
-        elif choice == '2':
-            algorithm_choice(algorithm='dfs')
-        elif choice == '3':
-            print("Goodbye!")
-            sys.exit()
-        else:
-            print("Invalid choice, please try again.")
+#         # Create the sidebar frame
+#         self.sidebar = SideBar(self)
+#         self.sidebar.grid(row=0, column=0, sticky="ns")  # Sidebar spans top to bottom
 
-def algorithm_choice(algorithm):
-    """
-    Handle algorithm-specific actions, including verbose traversal or searching for a specific node.
-    """
-    print_action_selection()
-    action = input("Choose an action (1 or 2): ")
+#         # Create the main frame
+#         self.main_frame = MainFrame(self)
+#         self.main_frame.grid(row=0, column=1, sticky="nsew")  # Main frame fills the space
 
-    # Search for a specific node in the graph
-    if action == '1':
-        search_node = input("Input the node to be searched: ").strip()
-        # if search_node not in graph:
-        #     print(f"Node '{search_node}' does not exist in the graph. Please try again.")
-        #     return
+# if __name__ == "__main__":
+#     app = App()
+#     app.mainloop()
 
-        process_algorithm(algorithm, search_node=search_node)
-    
-    # Traverse the graph without searching for a node
-    elif action == '2':
-        process_algorithm(algorithm)
-    else:
-        print("Invalid choice, please try again.")
-        algorithm_choice(algorithm)
+import customtkinter as ctk
+from frames.main_frame import MainFrame
+from frames.sidebar_frame import SideBar
 
-    # Back or Exit after completion
-    print(print_back_or_exit())
-    if not back_or_exit():
-        sys.exit()
+ctk.set_appearance_mode("dark")  # Dark mode
+ctk.set_default_color_theme("blue")  # Blue theme
 
-def process_algorithm(algorithm, search_node=''):
-    """
-    Process the selected algorithm in either verbose or standard mode.
-    """
-    print_algorithm_choice(algorithm_name=algorithm)
-    choice = input("Choose an option (1 or 2): ")
+class App(ctk.CTk):
+    def __init__(self):
+        super().__init__(fg_color="black")
+        self.title("CustomTkinter Modular App")
+        self.geometry("1300x600")
+        self.resizable(False, False)
 
-    verbose = choice == '1'
-    if algorithm == 'bfs':
-        steps = bfs(graph, 'A', search_node, verbose=verbose)
-    elif algorithm == 'dfs':
-        steps = dfs_type_choice(verbose, search_node)
+        # Create a grid layout for the App window
+        self.grid_rowconfigure(0, weight=1)  # Make the row stretchable
+        self.grid_columnconfigure(1, weight=1)  # Make the main frame stretchable
 
-    if verbose:
-        print(f"Final Traversal Steps: {steps}")
-    else:
-        print("\nStandard Mode: Showing final result only...\n")
-        print(f"Final Traversal Steps: {steps}")
+        # Create the sidebar frame
+        self.sidebar = SideBar(self)
+        self.sidebar.grid(row=0, column=0, sticky="ns")  # Sidebar spans top to bottom
 
-def dfs_type_choice(verbose, search_node=''):
-    """
-    Allow the user to choose the type of DFS (left-most or right-most).
-    """
-    print_dfs_type()
-    dfs_type = input("Choose an option (1 or 2): ")
+        # Create the main frame
+        self.main_frame = MainFrame(self)
+        self.main_frame.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")  # Main frame fills the space
 
-    if dfs_type == '1':  # Left-most DFS
-        return dfs(graph, 'A', search_node, verbose=verbose)
-    elif dfs_type == '2':  # Right-most DFS
-        return dfs(graph, 'A', search_node, direction='right-most', verbose=verbose)
-    else:
-        print("Invalid choice, please try again.")
-        return dfs_type_choice(verbose, search_node)
+        # Register close event
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
+
+    def on_closing(self):
+        self.destroy()
 
 if __name__ == "__main__":
-    main_menu()
+    app = App()
+    app.mainloop()

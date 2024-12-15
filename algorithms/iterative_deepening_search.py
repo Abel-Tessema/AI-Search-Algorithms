@@ -1,4 +1,4 @@
-def iterative_deepening_search(graph, start_node, goal_node, max_depth):
+def iterative_deepening_search(graph, goal_node, max_depth, start_node='A'):
     def dls(node, depth):
         if depth == 0:
             return node == goal_node
@@ -9,7 +9,7 @@ def iterative_deepening_search(graph, start_node, goal_node, max_depth):
                     return True
         return False
 
-    for depth in range(max_depth + 1):
+    for depth in range((max_depth) + 1):
         path = []
         if dls(start_node, depth):
             path.append(start_node)
@@ -34,7 +34,7 @@ start = 'A'
 goal = 'K'
 max_depth = 5
 
-path = iterative_deepening_search(graph, start, goal, max_depth)
+path = iterative_deepening_search(graph, goal, max_depth, start)
 if path:
     print(f"Path to goal: {path}")
 else:

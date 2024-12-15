@@ -1,9 +1,9 @@
 import customtkinter as ctk
 
-from notes.notes import notes
+from utils.notes import notes
 
 class noteWidget(ctk.CTkTextbox):
-    def __init__(self, master, algorithm="DFS"):
+    def __init__(self, master, algorithm="BFS"):
         super().__init__(master, width=550, wrap="word")
 
         self.insert("1.0", notes[f"{algorithm}"])

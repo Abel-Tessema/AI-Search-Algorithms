@@ -1,6 +1,6 @@
 from collections import deque
 
-def breadth_first_traversal(graph, start_node):
+def breadth_first_traversal(graph, start_node='A'):
     visited = set()
     queue = deque([start_node])
     traversal_order = []
@@ -18,11 +18,11 @@ def breadth_first_traversal(graph, start_node):
 
 graph = {
     'A': ['B', 'C'],
-    'B': ['A', 'D', 'E'],
-    'C': ['A', 'F'],
-    'D': ['B'],
-    'E': ['B'],
-    'F': ['C']
+    'B': ['D', 'E'],
+    'C': ['F'],
+    'D': [],
+    'E': [],
+    'F': []
 }
 
 print(breadth_first_traversal(graph, 'A'))

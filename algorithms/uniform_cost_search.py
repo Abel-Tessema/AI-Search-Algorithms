@@ -1,6 +1,6 @@
 import heapq
 
-def uniform_cost_search(graph, start_node, goal_node):
+def uniform_cost_search(graph, goal_node, start_node='A'):
     priority_queue = []
     heapq.heappush(priority_queue, (0, start_node, [start_node]))
     visited = set()

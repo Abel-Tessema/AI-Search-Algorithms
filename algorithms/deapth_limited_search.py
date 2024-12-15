@@ -1,4 +1,4 @@
-def depth_limited_search(graph, start_node, depth_limit):
+def depth_limited_search(graph, depth_limit, start_node='A'):
     traversal_order = []
     
     def dls(node, depth):
@@ -31,7 +31,7 @@ graph = {
     'P': []
 }
 
-# Demonstrate Depth-Limited Search with various limits
-print("Depth Limit 1:", depth_limited_search(graph, 'A', 1))
-print("Depth Limit 2:", depth_limited_search(graph, 'A', 2))
-print("Depth Limit 3:", depth_limited_search(graph, 'A', 3))
+# # Demonstrate Depth-Limited Search with various limits
+print("Depth Limit 1:", depth_limited_search(graph, 1))
+print("Depth Limit 2:", depth_limited_search(graph, 2))
+print("Depth Limit 3:", depth_limited_search(graph, 3))

@@ -1,4 +1,4 @@
-def depth_first_traversal(graph, start_node):
+def depth_first_traversal(graph, start_node='A'):
     visited = set()
     traversal_order = []
     
@@ -14,11 +14,11 @@ def depth_first_traversal(graph, start_node):
 
 graph = {
     'A': ['B', 'C'],
-    'B': ['A', 'D', 'E'],
-    'C': ['A', 'F'],
-    'D': ['B'],
-    'E': ['B'],
-    'F': ['C']
+    'B': ['D', 'E'],
+    'C': ['F'],
+    'D': [],
+    'E': [],
+    'F': []
 }
 
 print(depth_first_traversal(graph, 'A'))
