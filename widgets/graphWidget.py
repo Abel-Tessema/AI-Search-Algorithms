@@ -18,7 +18,7 @@ class graphWidget(ctk.CTkFrame):
 
         self.algorithm = algorithm
         self.plot_area = ctk.CTkFrame(self,)
-        self.plot_area.grid(row=0, column=0, padx=1, pady=1,sticky='n')
+        self.plot_area.grid(row=0, column=0, padx=2, pady=2,sticky='n')
 
         self.display_graph()
 

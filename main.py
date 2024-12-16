@@ -37,7 +37,7 @@ ctk.set_default_color_theme("blue")  # Blue theme
 
 class App(ctk.CTk):
     def __init__(self):
-        super().__init__(fg_color="black")
+        super().__init__(fg_color="#232323")
         self.title("CustomTkinter Modular App")
         self.geometry("1300x600")
         self.resizable(False, False)

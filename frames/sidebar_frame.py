@@ -6,7 +6,7 @@ informed_alg_list = ["Best-First Search", "A* Search",]
 
 class SideBar(ctk.CTkFrame):
     def __init__(self, master):
-        super().__init__(master)  
+        super().__init__(master, )  
 
         # Set font for the titles
         heading_1 = ctk.CTkFont("Arial", 20, "bold",)

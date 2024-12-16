@@ -7,7 +7,7 @@ from widgets.search_output import search_output
 
 class MainFrame(ctk.CTkFrame):
     def __init__(self, master):
-        super().__init__(master,fg_color="black")
+        super().__init__(master,fg_color="#232323")
 
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(1, weight=1, pad=20)
