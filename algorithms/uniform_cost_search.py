@@ -1,6 +1,9 @@
 import heapq
 
-def uniform_cost_search(graph, goal_node, start_node='A'):
+def uniform_cost_traversal(graph, goal_node, start_node='A'):
+    if not goal_node:
+        return (False, float('inf'), [])
+    
     priority_queue = []
     heapq.heappush(priority_queue, (0, start_node, [start_node]))
     visited = set()
@@ -14,13 +17,14 @@ def uniform_cost_search(graph, goal_node, start_node='A'):
         visited.add(current_node)
         
         if current_node == goal_node:
-            return current_cost, current_path
+            return (True, current_cost, current_path)
         
         for neighbor, cost in graph.get(current_node, []):
             if neighbor not in visited:
                 heapq.heappush(priority_queue, (current_cost + cost, neighbor, current_path + [neighbor]))
     
-    return float('inf'), []
+    return (False, float('inf'), [])
+
 
 graph = {
     'A': [('B', 1), ('C', 4)],
@@ -32,7 +36,5 @@ graph = {
     'G': []
 }
 
-start = 'A'
-goal = 'G'
-cost, path = uniform_cost_search(graph, start, goal)
-print(f"Cost: {cost}, Path: {path}")
+def uniform_cost_search(graph, goal):
+    return uniform_cost_traversal(graph, goal)

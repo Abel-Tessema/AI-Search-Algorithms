@@ -236,9 +236,106 @@ where, b: Maximum branching factor of the search tree (actions per state).
 
 """,
 "Best-First Search" : """
-This is note for Best first search and we hello every body, this thing is kind of fun and annoying at the same tiem.
+Best-First Search
+
+BFS stands for Best First Search, which is a type of Search in the context of artificial intelligence that aims to choose the best paths toward the target path by evaluating the nodes using a pre-stipulated evaluation function. This algorithm takes the best features of the DFS and BFS strategies to perform an efficient search in a search space. Heuristic information assists the BFS algorithm in choosing the next appropriate node for expansion so as to minimize the overall Search and potential to get closer to the goal state.
+
+The evaluation function, normally used as a heuristic function, measures the cost of steps needed to reach the goal from the current node. Using an example, in Greedy Best-First Search such as A*, the algorithm preferentially opens nodes with the least estimated cost and swiftly moves towards the goal node. In contrast, the A* Search algorithm considers two factors: the cost of the path and the estimated cost to reach the goal, making it even more effective in the selection of the most suitable path. BFS can originate from any node and expand in all directions at once; this is especially advantageous when searching over a large area and the goal is not easily recognizable. Still, BFS is quite powerful in practice, but its success greatly depends on the quality of the heuristic function applied, which defines the algorithm's outcome and precision.
+
+In simpler terms, Best-first search algorithm chooses the nodes, taking into consideration the goal's cost estimate. It favors those nodes that look like they are closest to the goal, but it does not always guarantee an optimal solution. It is useful when a good heuristic is found, meaning that we do not always have to solve the problem from scratch.
+
+The Mechanism of Greedy Best-first search Algorithm
+
+The algorithm attempts to complete its search with the shortest heuristic cost on the nodes, effectively seeking to reach the goal. Steps:
+    1. Initialization:
+        -Begin with the first node that you have chosen, which is also the only node we have.
+        -Enter the first node into the priority queue by the amount of its estimated heuristic function h(n).  
+    2. Expand the most promising node:
+        -The marked node with the lowest value - this node must be removed
+        -The next available processor takes an h(n) from the priority queue.
+        -If this node is the goal, then print the path at this node, and the search is done.
+    3. Generate successors:
+        -Produce all possible successors (the cellular neighbours) of the current node.
+    4. Evaluate and add successors:
+        -Determine a heuristic value h for each of the successors.
+        -The successors are added to the priority queue according to their h values.
+    5. Repeat:
+        -Perform steps 2 to 4 as many times as could be possible until either a goal node is discovered or until the priority queue is exhausted and no nodes can be retrieved from it.
+
+Unique Features in the Best First Search Algorithm
+
+Heuristic Evaluation Function: BFS always has an order of visiting nodes determined by a heuristic evaluation function. This function calculates the cost required from the starting node to the goal node, thus increasing the algorithm's efficiency by identifying the most prospecting moves.
+
+Priority Queue: The nodes to be explored are stored in the prioritized queue in BFS. The paths that correspond to nodes that are defined as the farthest from the heuristic costs' start point are given high preference, giving the algorithm a better chance of pursuing the best paths first.
+
+Generality: The BFS algorithm is indeed rather general and can be used for further needs with specific alterations. Due to the changes in heuristic function, the BFS can be converted to another, such as the A* Search, and thus helpful in solving different forms of search problems.
+
+Informed Search: While the searched paths, in this case, are generated randomly without any information on the costs to the target, BFS is an informed search algorithm. Heuristics help to control the direction of the search, thus making it more effective in arriving at the best search path.
+
+Applications of Best First Search
+
+    -Pathfinding in Games: BFS algorithms are frequently employed in video games to a path for character to reach its goal from the starting point.
+    -Robotics: In robotics, BFS algorithms are useful for applying movement in the presence of navigation. 
+    -Network Routing: Nowadays, BFS algorithms are employed in network routing, enabling data packets to pass through the network with ease. 
+    -Artificial Intelligence: BFS algorithms are very important to AI when it comes to providing solutions to difficult issues like NL, ML, and decision-making solutions. 
+    -Navigation Systems: Navigation systems, including GPS, use BFS algorithms to determine the shortest and quickest means of traveling. 
+
+Properties of search algorithms
+
+Complete: No, it is incomplete, even if the given state space is finite.
+Optimal: No
+Time Complexity: O(bm), where m is the maximum depth of the search space.
+Space Complexity: O(bm)
+
+
 """, 
 "A* Search" : """
-This is note for A* search and we hello every body, this thing is kind of fun and annoying at the same tiem.
+A* Search
+
+Developed in 1968 by Peter Hart, Nils Nilsson, and Bertram Raphael, the A* algorithm was designed as an extension and improvement of Dijkstra's algorithm, which is also known for finding the shortest path between nodes in a graph. Unlike Dijkstra's algorithm, which uniformly explores all directions around the starting node, A* uses heuristics to estimate the cost from a node to the goal, thereby optimizing the search process and reducing the computational load.
+
+The Mechanism of A* Algorithm
+
+The core of the A* algorithm is based on cost functions and heuristics. It uses two main parameters:
+    -g(n): The actual cost from the starting node to any node n.
+    -h(n): The heuristic estimated cost from node n to the goal. This is where A* integrates knowledge beyond the graph to guide the search.
+
+The sum, f(n)=g(n)+h(n), represents the total estimated cost of the cheapest solution. The A* algorithm functions by maintaining a priority queue (or open set) of all possible paths along the graph, prioritizing them based on their f(n) values. The steps of the algorithm are as follows:
+    1. Initialization: Start by adding the initial node to the open set with its f(n).
+    2. Loop: While the open set is not empty, the node with the lowest f(n) value is removed from the queue.
+    3. Goal Check: If this node is the goal, the algorithm terminates and returns the discovered path.
+    4. Node Expansion: Otherwise, expand the node (find all its neighbors), calculating g, h, and f values for each neighbor. Add each neighbor to the open set if it's not already present, or if a better path to this neighbor is found.
+    5. Repeat: The loop repeats until the goal is reached or if there are no more nodes in the open set, indicating no available path.
+
+Heuristic Function in A* Algorithm
+
+The effectiveness of the A* algorithm largely depends on the heuristic used. The choice of heuristic can dramatically affect the performance and efficiency of the algorithm. A good heuristic is one that helps the algorithm find the shortest path by exploring the least number of nodes possible. The properties of a heuristic include:
+    -Admissibility: A heuristic is admissible if it never overestimates the cost of reaching the goal. The classic example of an admissible heuristic is the straight-line distance in a spatial map.
+    -Consistency (or Monotonicity): A heuristic is consistent if the estimated cost from the current node to the goal is always less than or equal to the estimated cost from any adjacent node plus the step cost from the current node to the adjacent node.
+
+Common heuristics include the Manhattan distance for grid-based maps (useful in games and urban planning) and the Euclidean distance for direct point-to-point distance measurement.
+
+Applications of A*
+
+The A* algorithm's ability to find the most efficient path with a given heuristic makes it suitable for various practical applications:
+    -Pathfinding in Games and Robotics: A* is extensively used in the gaming industry to control characters in dynamic environments, as well as in robotics for navigating between points.
+    -Network Routing: In telecommunications, A* helps in determining the shortest routing path that data packets should take to reach the destination.
+    -AI and Machine Learning: A* can be used in planning and decision-making algorithms, where multiple stages of decisions and movements need to be evaluated.
+
+Properties of search algorithms
+
+Complete: Yes, as long as:
+    -The branching factor is finite.
+    -The cost at every action is fixed.
+Optimal: Yes, if it follows these two conditions:
+    -Admissible: h(n) should be an admissible heuristic for A* tree search. An admissible heuristic is optimistic in nature.
+    -Consistent: This condition is only required for A* graph search.
+Time Complexity: O(bd), where b is the branching factor. The time complexity is dependent on the heuristic function. The number of nodes expanded is exponential to the depth of the solution (d).
+Space Complexity: O(bd)
+
+where, b: Maximum branching factor of the search tree (actions per state).
+       d: Depth of the solution
+       m: Maximum depth of the state space (may be ∞)
+
 """,
 }

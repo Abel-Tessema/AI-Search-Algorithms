@@ -5,7 +5,8 @@ from utils.graphs import (
     bfs_and_dfs_search_graph, 
     depth_limited_search_graph, 
     iddfs_graph, 
-    uniform_cost_search_graph
+    uniform_cost_search_graph,
+    informed_detail,
 )
 
 class graphWidget(ctk.CTkFrame):
@@ -28,15 +29,14 @@ class graphWidget(ctk.CTkFrame):
         for widget in self.plot_area.winfo_children():
             widget.destroy()
 
-        weighted = self.algorithm in ["Bidirectional Search", "UCS"]
-        # weighted = self.algorithm in [ "UCS"]
-        # print(weighted)
+        weighted = self.algorithm in ["Bidirectional Search", "UCS", "Best-First Search", "A* Search"]
         plot_graph(self.plot_area, self.algorithm, adjacency_list, weighted)
 
     def update_graph(self, algorithm):
         """Update the graph with a new algorithm."""
-        self.algorithm = algorithm
-        self.display_graph()
+        if self.algorithm != algorithm:
+            self.algorithm = algorithm
+            self.display_graph()
 
     def get_graph_data(self, algorithm):
         """Retrieve the corresponding adjacency list based on the selected algorithm."""
@@ -47,5 +47,7 @@ class graphWidget(ctk.CTkFrame):
             "DLS": depth_limited_search_graph,
             "IDDFS": iddfs_graph,
             "UCS": uniform_cost_search_graph,
+            "Best-First Search": informed_detail[0] , 
+            "A* Search": informed_detail[0] ,
         }
         return graphs.get(algorithm, bfs_and_dfs_search_graph)

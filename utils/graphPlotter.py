@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
+from utils.graphs import informed_detail
+
 def plot_graph(parent, algorithm, adjacency_list, weighted=False):
     """ 
     Plot a graph from an adjacency list and display it in the given parent widget.
@@ -17,12 +19,22 @@ def plot_graph(parent, algorithm, adjacency_list, weighted=False):
 
     pos = _binary_tree_layout(G, list(adjacency_list.keys())[0])
 
-    # Create a figure and draw the graph
+
+    # Create a figure and draw the graph 
     fig, ax = plt.subplots(figsize=(5,3))
-    nx.draw(
-        G, pos, with_labels=True, ax=ax, 
-        node_color='white', node_size=250, font_size=12, font_weight='normal',
-    )
+    
+    if algorithm in ["Best-First Search", "A* Search",]:
+        node_labels = {node: f"{node}({informed_detail[1][node]})" for node in G.nodes}
+        nx.draw(
+            G, pos, with_labels=True, ax=ax, 
+            node_color='white', node_size=250, font_size=9, font_weight='normal',
+            labels=node_labels
+        )
+    else:
+        nx.draw(
+            G, pos, with_labels=True, ax=ax, 
+            node_color='white', node_size=250, font_size=12, font_weight='normal',
+        )
 
     if weighted:
         edge_labels = nx.get_edge_attributes(G, 'weight')

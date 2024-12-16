@@ -1,8 +1,10 @@
-
 import heapq
 
-def bidirectional_search_with_costs(graph, goal_node, start_node='A'):
-    forward_queue = [(0, start_node, [start_node])]  # (cost, current_node, path)
+def bidirectional_traversal_with_costs(graph, goal_node, start_node='A'):
+    if not goal_node:
+        return (False, float('inf'), [])
+    
+    forward_queue = [(0, start_node, [start_node])]
     backward_queue = [(0, goal_node, [goal_node])]
     
     forward_visited = {}
@@ -44,7 +46,10 @@ def bidirectional_search_with_costs(graph, goal_node, start_node='A'):
                 if neighbor not in backward_visited or backward_cost + cost < backward_visited[neighbor][0]:
                     heapq.heappush(backward_queue, (backward_cost + cost, neighbor, backward_path + [neighbor]))
     
-    return best_cost, best_path
+    if best_path:
+        return (True, best_cost, best_path)
+    return (False, float('inf'), [])
+
 
 
 graph = {
@@ -57,8 +62,5 @@ graph = {
     'G': [('D', 1), ('E', 2), ('F', 3)]
 }
 
-start = 'A'
-goal = 'E'
-
-cost, path = bidirectional_search_with_costs(graph, start, goal)
-print(f"Cost: {cost}, Path: {path}")
+def bidirectional_search_with_costs(graph, goal):
+    return bidirectional_traversal_with_costs(graph, goal)

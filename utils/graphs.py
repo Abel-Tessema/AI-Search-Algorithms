@@ -8,6 +8,16 @@ bidirectional_search_graph = {
     'G': []
 }
 
+bidirectional_search_graph_1 = {
+    'A': [('B', 1), ('C', 4)],
+    'B': [('A', 1), ('D', 2), ('E', 5)],
+    'C': [('A', 4), ('F', 1)],
+    'D': [('B', 2), ('G', 1)],
+    'E': [('B', 5), ('G', 2)],
+    'F': [('C', 1), ('G', 3)],
+    'G': [('D', 1), ('E', 2), ('F', 3)]
+}
+
 bfs_and_dfs_search_graph = {
     'A': ['B', 'C'],
     'B': ['D', 'E'],
@@ -59,3 +69,25 @@ uniform_cost_search_graph = {
     'F': [('G', 3)],
     'G': []
 }
+
+informed_graph = {
+    'A': [('B', 1), ('C', 4)],
+    'B': [('D', 2), ('E', 5)],
+    'C': [('F', 1)],
+    'D': [('G', 1)],
+    'E': [('G', 2)],
+    'F': [('G', 3)],
+    'G': []
+}
+
+informed_heuristic = {
+    'A': 7,
+    'B': 6,
+    'C': 4,
+    'D': 3,
+    'E': 2,
+    'F': 6,
+    'G': 0
+}
+
+informed_detail = (informed_graph, informed_heuristic)
