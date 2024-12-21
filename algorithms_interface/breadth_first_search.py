@@ -20,15 +20,6 @@ def breadth_first_traversal(graph, goal='', start_node='A'):
     
     return (None,traversal_order)
 
-graph = {
-    'A': ['B', 'C'],
-    'B': ['D', 'E'],
-    'C': ['F'],
-    'D': [],
-    'E': [],
-    'F': []
-}
-
 def breadth_first_search(graph, goal=None, ):
     if goal == None:
         return breadth_first_traversal(graph)

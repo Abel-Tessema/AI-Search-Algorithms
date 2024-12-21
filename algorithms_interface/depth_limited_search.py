@@ -22,35 +22,8 @@ def depth_limited_traversal(graph, depth_limit, goal='', start_node='A'):
         return (found, traversal_order)
     return (None, traversal_order)
 
-
-graph = {
-    'A': ['B', 'C', 'D'],
-    'B': ['E', 'F', 'G'],
-    'C': ['H', 'I'],
-    'D': ['J'],
-    'E': ['K', 'L'],
-    'F': [],
-    'G': ['M'],
-    'H': [],
-    'I': ['N', 'O'],
-    'J': ['P'],
-    'K': [],
-    'L': [],
-    'M': [],
-    'N': [],
-    'O': [],
-    'P': []
-}
-
-
 def depth_limited_search(graph, depth_limit, goal=None,):
     if goal == None:
         return depth_limited_traversal(graph, depth_limit)
     else:
         return depth_limited_traversal(graph, depth_limit, goal)
-
-# print(depth_limited_search(graph, 1, "P"))
-# # Demonstrate Depth-Limited Search with various limits
-# print("Depth Limit 1:", depth_limited_traversal(graph, 1))
-# print("Depth Limit 2:", depth_limited_traversal(graph, 2))
-# print("Depth Limit 3:", depth_limited_traversal(graph, 3))

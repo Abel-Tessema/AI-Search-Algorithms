@@ -16,24 +16,6 @@ def iterative_deepening_traversal(graph, goal_node, max_depth, start_node="A"):
             return (True, path[::-1])
     return (False, [])
 
-graph = {
-    'A': ['B', 'C', 'D'],
-    'B': ['E', 'F'],
-    'C': ['G'],
-    'D': ['H'],
-    'E': [],
-    'F': ['I', 'J'],
-    'G': ['K'],
-    'H': [],
-    'I': [],
-    'J': [],
-    'K': []
-}
-
-start = 'A'
-goal = 'K'
-max_depth = 5
-
 def iterative_deepening_search(graph, goal, max_depth):
     if goal == None:
         return iterative_deepening_traversal(graph, goal,  max_depth)

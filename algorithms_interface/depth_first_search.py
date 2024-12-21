@@ -18,16 +18,6 @@ def depth_first_traversal(graph, goal='', start_node='A'):
         return (found, traversal_order)
     return None, traversal_order
 
-
-graph = {
-    'A': ['B', 'C'],
-    'B': ['D', 'E'],
-    'C': ['F'],
-    'D': [],
-    'E': [],
-    'F': []
-}
-
 def depth_first_search(graph, goal=None, ):
     if goal == None:
         return depth_first_traversal(graph)

@@ -25,16 +25,5 @@ def uniform_cost_traversal(graph, goal_node, start_node='A'):
     
     return (False, float('inf'), [])
 
-
-graph = {
-    'A': [('B', 1), ('C', 4)],
-    'B': [('D', 2), ('E', 5)],
-    'C': [('F', 1)],
-    'D': [('G', 1)],
-    'E': [('G', 2)],
-    'F': [('G', 3)],
-    'G': []
-}
-
 def uniform_cost_search(graph, goal):
     return uniform_cost_traversal(graph, goal)

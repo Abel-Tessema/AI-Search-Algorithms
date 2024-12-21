@@ -50,17 +50,5 @@ def bidirectional_traversal_with_costs(graph, goal_node, start_node='A'):
         return (True, best_cost, best_path)
     return (False, float('inf'), [])
 
-
-
-graph = {
-    'A': [('B', 1), ('C', 4)],
-    'B': [('A', 1), ('D', 2), ('E', 5)],
-    'C': [('A', 4), ('F', 1)],
-    'D': [('B', 2), ('G', 1)],
-    'E': [('B', 5), ('G', 2)],
-    'F': [('C', 1), ('G', 3)],
-    'G': [('D', 1), ('E', 2), ('F', 3)]
-}
-
 def bidirectional_search_with_costs(graph, goal):
     return bidirectional_traversal_with_costs(graph, goal)
