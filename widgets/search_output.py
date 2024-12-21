@@ -8,14 +8,14 @@ from utils.graphs import (
     uniform_cost_search_graph,
     informed_detail,
 )
-from algorithms.breadth_first_search import breadth_first_search
-from algorithms.depth_first_search import depth_first_search
-from algorithms.depth_limited_search import depth_limited_traversal
-from algorithms.iterative_deepening_search import iterative_deepening_search
-from algorithms.uniform_cost_search import uniform_cost_search
-from algorithms.bidirectional_search import bidirectional_search_with_costs
-from algorithms.a_star_search import a_star_search
-from algorithms.best_first_search import best_first_search
+from algorithms_interface.breadth_first_search import breadth_first_search
+from algorithms_interface.depth_first_search import depth_first_search
+from algorithms_interface.depth_limited_search import depth_limited_traversal
+from algorithms_interface.iterative_deepening_search import iterative_deepening_search
+from algorithms_interface.uniform_cost_search import uniform_cost_search
+from algorithms_interface.bidirectional_search import bidirectional_search_with_costs
+from algorithms_interface.a_star_search import a_star_search
+from algorithms_interface.best_first_search import best_first_search
 
 
 class search_output(ctk.CTkFrame):
