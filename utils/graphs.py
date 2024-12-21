@@ -83,7 +83,7 @@ informed_graph = {
 informed_heuristic = {
     'A': 7,
     'B': 6,
-    'C': 4,
+    'C': 8,
     'D': 3,
     'E': 2,
     'F': 6,

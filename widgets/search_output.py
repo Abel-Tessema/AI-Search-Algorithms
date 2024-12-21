@@ -34,7 +34,6 @@ class search_output(ctk.CTkFrame):
         self.search_button = ctk.CTkButton(self, text="Search", command=self.submit_action)
 
         self.result_label_1 = ctk.CTkLabel(self, text="Search a node...")
-        self.result_label_2 = ctk.CTkLabel(self, text="Search result...")
 
         self.layout_widgets()  # Initial layout
 
@@ -91,22 +90,22 @@ class search_output(ctk.CTkFrame):
                 self.result_label_1.configure(text=f"The the traversal order is {path[1]}!")
             else:
                 if path[0] == True:
-                    self.add_widget(self.result_label_2, 4, 0, 2)
-                    self.result_label_2.configure(text=f"Successfully found, path: {path[1]}")
+                    self.add_widget(self.result_label_1, 4, 0, 2)
+                    self.result_label_1.configure(text=f"Successfully found, path: {path[1]}")
                 else:
-                    self.add_widget(self.result_label_2, 4, 0, 2)
-                    self.result_label_2.configure(text=f"Node not found, order of traversal is:\n {path[1]}")
+                    self.add_widget(self.result_label_1, 4, 0, 2)
+                    self.result_label_1.configure(text=f"Node not found, order of traversal is:\n {path[1]}")
         
         if self.algorithm == "DLS":
             if path[0] == None:
                 self.result_label_1.configure(text=f"The traversal for {depth_limit} depth limit is: \n {path[1]}!")
             else:
                 if path[0] == True:
-                    self.add_widget(self.result_label_2, 4, 0, 2)
-                    self.result_label_2.configure(text=f"Successfully found at depth limit: {depth_limit}, \npath: {path[1]}")
+                    self.add_widget(self.result_label_1, 4, 0, 2)
+                    self.result_label_1.configure(text=f"Successfully found at depth limit: {depth_limit}, \npath: {path[1]}")
                 else:
-                    self.add_widget(self.result_label_2, 4, 0, 2)
-                    self.result_label_2.configure(text=f"Node not found at depth limit: {depth_limit}, \npath: {path[1]}!")
+                    self.add_widget(self.result_label_1, 4, 0, 2)
+                    self.result_label_1.configure(text=f"Node not found at depth limit: {depth_limit}, \npath: {path[1]}!")
         if self.algorithm == "IDDFS":
             if user_input == '':
                 self.result_label_1.configure(text="Please enter a goal node.")

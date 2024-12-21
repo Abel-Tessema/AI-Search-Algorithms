@@ -1,39 +1,10 @@
-# import customtkinter as ctk
-# from frames.main_frame import MainFrame
-# from frames.sidebar_frame import SideBar
-
-# ctk.set_appearance_mode("dark")  # Dark mode
-# ctk.set_default_color_theme("blue")  # Blue theme
-
-# class App(ctk.CTk):
-#     def __init__(self):
-#         super().__init__()
-#         self.title("CustomTkinter Modular App")
-#         self.geometry("1300x600")
-#         self.resizable(False, False)
-
-#         # Create a grid layout for the App window
-#         self.grid_rowconfigure(0, weight=1)  # Make the row stretchable
-#         self.grid_columnconfigure(1, weight=1)  # Make the main frame stretchable
-
-#         # Create the sidebar frame
-#         self.sidebar = SideBar(self)
-#         self.sidebar.grid(row=0, column=0, sticky="ns")  # Sidebar spans top to bottom
-
-#         # Create the main frame
-#         self.main_frame = MainFrame(self)
-#         self.main_frame.grid(row=0, column=1, sticky="nsew")  # Main frame fills the space
-
-# if __name__ == "__main__":
-#     app = App()
-#     app.mainloop()
-
 import customtkinter as ctk
+
 from frames.main_frame import MainFrame
 from frames.sidebar_frame import SideBar
-
-ctk.set_appearance_mode("dark")  # Dark mode
-ctk.set_default_color_theme("blue")  # Blue theme
+from frames.credits_frame import CreditsFrame
+from frames.splash_screen_frame import SplashScreen
+  
 
 class App(ctk.CTk):
     def __init__(self):
@@ -42,23 +13,43 @@ class App(ctk.CTk):
         self.geometry("1300x600")
         self.resizable(False, False)
 
-        # Create a grid layout for the App window
-        self.grid_rowconfigure(0, weight=1)  # Make the row stretchable
-        self.grid_columnconfigure(1, weight=1)  # Make the main frame stretchable
+        self.splash_frame = SplashScreen(self)
+        self.splash_frame.pack(fill="both", expand=True)
 
-        # Create the sidebar frame
+        self.after(3000, self.show_main_app)  
+
+    def show_main_app(self):
+        self.splash_frame.pack_forget()
+
+        self.grid_rowconfigure(0, weight=1)  
+        self.grid_columnconfigure(1, weight=1)  
+
         self.sidebar = SideBar(self)
-        self.sidebar.grid(row=0, column=0, sticky="ns")  # Sidebar spans top to bottom
+        self.sidebar.grid(row=0, column=0, sticky="ns")  
 
-        # Create the main frame
+        self.sidebar.credits_button.configure(command=self.show_credits)
+
         self.main_frame = MainFrame(self)
-        self.main_frame.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")  # Main frame fills the space
+        self.main_frame.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")  
 
-        # Register close event
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
+
+    def show_credits(self):
+        self.sidebar.grid_forget()
+        self.main_frame.grid_forget()
+
+        self.credits_frame = CreditsFrame(self,)
+        self.credits_frame.pack(fill="both", expand=True)
+
+    def show_main_layout(self):
+        self.credits_frame.pack_forget()
+
+        self.sidebar.grid(row=0, column=0, sticky="ns")
+        self.main_frame.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
 
     def on_closing(self):
         self.destroy()
+
 
 if __name__ == "__main__":
     app = App()
