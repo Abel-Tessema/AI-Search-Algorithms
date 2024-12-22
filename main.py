@@ -9,7 +9,7 @@ from frames.splash_screen_frame import SplashScreen
 class App(ctk.CTk):
     def __init__(self):
         super().__init__(fg_color="#232323")
-        self.title("CustomTkinter Modular App")
+        self.title("Search Explorer")
         self.geometry("1300x600")
         self.resizable(False, False)
 
